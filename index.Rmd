@@ -1,9 +1,18 @@
 ---
 title: "Welcome"
 output: 
-  html_document:
-    toc: true
-    toc_float: true
+  html_document
 ---
 
-This is GXW's 
+
+## Hi, I'm Xinwen Guo 👋
+
+[View my resume](resume.html) &nbsp;|&nbsp; 
+[GitHub](https://github.com/willowinna) &nbsp;|&nbsp; 
+[Email](mailto:xg2489@cumc.columbia.edu)
+
+---
+
+## About Me
+
+Currently I'm a **Master's student in Biostatistics** at Columbia University. Before graduate school, I was an undergraduate in **Mathematics and Applied Mathematics** at University of Nottingham Ningbo China. Outside of work, I enjoy video games and musicals.
