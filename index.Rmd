@@ -13,6 +13,9 @@ output:
 
 ---
 
-## About Me
+## A Brief Introduction
 
 Currently I'm a **Master's student in Biostatistics** at Columbia University. Before graduate school, I was an undergraduate in **Mathematics and Applied Mathematics** at University of Nottingham Ningbo China. Outside of work, I enjoy video games and musicals.
+
+
+
