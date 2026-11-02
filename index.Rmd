@@ -19,5 +19,5 @@ Currently I'm a Master's student in Biostatistics at Columbia University. Before
 
 Outside of study, I enjoy video games and musicals.
 
-
+<img src="robin.gif" style="width:30%">
 
