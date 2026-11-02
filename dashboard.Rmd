@@ -18,34 +18,72 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 
-Column {data-width=650}
+Column {data-width=400}
 -----------------------------------------------------------------------
 
-### Chart A
+### Top 10 Departments by Orders Count
 
 ```{r echo=FALSE}
 instacart |>
   count(department) |>
   slice_max(n, n = 10) |>
-  plot_ly(x = ~department, y = ~n, type = "bar")
+  plot_ly(x = ~department, y = ~n, type = "bar") |>
+  layout(xaxis = list(title = "Department"), yaxis = list(title = "Orders Count"))
 ```
+
+### **Orders Distribution** by Hour of Day
+
+```{r}
+instacart |>
+  count(order_hour_of_day) |>
+  plot_ly(
+    x = ~order_hour_of_day, 
+    y = ~n, 
+    type = "scatter", 
+    mode = "lines+markers") |>
+  layout(xaxis = list(title = "Hour of Day"), yaxis = list(title = "Number of Orders"))
+```
+
 
 Column {data-width=350}
 -----------------------------------------------------------------------
 
-### Chart B
+### Orders Count by Aisles in the **Produce Department**
 
 ```{r}
-instacart %>%
-  count(order_hour_of_day) %>%
-  plot_ly(x = ~order_hour_of_day, y = ~n, type = "scatter", mode = "lines+markers") %>%
-  layout(xaxis = list(title = "Hour of Day"), yaxis = list(title = "Number of Orders"))
+instacart |>
+  filter(department == "produce") |>
+  count(aisle) |>   
+  plot_ly(
+    x = ~reorder(aisle, -n),      
+    y = ~n,                       
+    type = "bar"
+  ) |>
+  layout(
+    xaxis = list(
+      title = "Aisle", 
+      tickangle = -30
+    ),
+    yaxis = list(
+      title = "Orders Count"
+    )
+  )
 ```
 
-### Chart C
+### **Order Size Distribution** by Hour of Day
 
 ```{r}
-instacart %>%
-  plot_ly(x = ~order_hour_of_day, y = ~add_to_cart_order, type = "scatter", mode = "markers", opacity = 0.5)
+instacart |>
+  group_by(order_id, order_hour_of_day) |>
+  summarise(order_size = n(), .groups = "drop") |>
+  plot_ly(
+    x = ~as.factor(order_hour_of_day), 
+    y = ~order_size, 
+    type = "box"
+  ) |>
+  layout(
+    xaxis = list(title = "Hour of Day"), 
+    yaxis = list(title = "Order Size"),
+    margin = list(b = 50)
+  )
 ```
-
