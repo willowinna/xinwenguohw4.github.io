@@ -21,7 +21,7 @@ knitr::opts_chunk$set(echo = FALSE)
 Column {data-width=400}
 -----------------------------------------------------------------------
 
-### Top 10 Departments by Orders Count
+### **Top 10 Departments** by Orders Count
 
 ```{r echo=FALSE}
 instacart |>
