@@ -1,20 +1,21 @@
 ---
-title: "Untitled"
+title: "InstaCart"
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
     vertical_layout: fill
+    theme: cosmo
 ---
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
-library(tidyverse)
-library(janitor)
-library(viridis)
-library(p8105.datasets)
+library(flexdashboard)
 library(plotly)
-```
+library(dplyr)
+library(p8105.datasets)
 
+knitr::opts_chunk$set(echo = FALSE)
+```
 
 
 Column {data-width=650}
@@ -22,8 +23,11 @@ Column {data-width=650}
 
 ### Chart A
 
-```{r}
-
+```{r echo=FALSE}
+instacart |>
+  count(department) |>
+  slice_max(n, n = 10) |>
+  plot_ly(x = ~department, y = ~n, type = "bar")
 ```
 
 Column {data-width=350}
@@ -32,12 +36,16 @@ Column {data-width=350}
 ### Chart B
 
 ```{r}
-
+instacart %>%
+  count(order_hour_of_day) %>%
+  plot_ly(x = ~order_hour_of_day, y = ~n, type = "scatter", mode = "lines+markers") %>%
+  layout(xaxis = list(title = "Hour of Day"), yaxis = list(title = "Number of Orders"))
 ```
 
 ### Chart C
 
 ```{r}
-
+instacart %>%
+  plot_ly(x = ~order_hour_of_day, y = ~add_to_cart_order, type = "scatter", mode = "markers", opacity = 0.5)
 ```
 
